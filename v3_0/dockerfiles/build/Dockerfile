@@ -8,8 +8,11 @@ RUN apt-get  -y -qq update; apt-get -y -qq install software-properties-common; \
     groupadd -r -g 2000  akeneo; useradd -r -u 2000 -g 2000 -m -c "Akeneo account" -d /home/akeneo -s /bin/bash akeneo; \
     mkdir -p /opt/letsencrypt
 
+ENV HOME /home/akeneo
+WORKDIR /home/akeneo
+
 RUN curl -sS https://getcomposer.org/installer | php
-RUN php composer.phar --help
+RUN ln -s /home/akeneo/composer.phar /usr/local/bin/composer
 COPY ./src/app-demodata.tar.gz /usr/src/app-demodata.tar.gz
 COPY ./src/app.tar.gz /usr/src/app.tar.gz
 RUN  chown akeneo:akeneo  /usr/src/*
@@ -22,5 +25,3 @@ RUN chmod +x /opt/letsencrypt/letsencrypt-auto; /opt/letsencrypt/letsencrypt-aut
 # Clean up
 RUN apt-get clean; apt-get autoclean; apt-get autoremove -y -qq && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 USER akeneo
-ENV HOME /home/akeneo
-WORKDIR /home/akeneo

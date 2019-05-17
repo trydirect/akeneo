@@ -5,7 +5,7 @@ services:
     image: ${REGISTRY}trydirect/akeneo:3.0
     container_name: akeneo
     hostname: akeneo
-    user: root
+    user: akeneo
     restart: always
     ports:
           - "443:443"
