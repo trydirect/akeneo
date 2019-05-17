@@ -46,7 +46,7 @@ print(mysql_log.decode())
 # Elasticsearch
 elastic = client.containers.get('akeneo_search')
 assert elastic.status == 'running'
-port = client.api.inspect_container('elasticsearch')['NetworkSettings']['Ports']['9200/tcp'][0]['HostPort']
+port = client.api.inspect_container('akeneo_search')['NetworkSettings']['Ports']['9200/tcp'][0]['HostPort']
 response = requests.get("http://localhost:{}".format(port))
 assert '"name" : "elasticsearch"' in response.text
 assert '"number" : "5.4.3"' in response.text
