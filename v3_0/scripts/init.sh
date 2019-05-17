@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # from pim project
 set -e
 cd "$(dirname "$0")"
