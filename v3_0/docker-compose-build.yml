@@ -3,6 +3,8 @@ version: '2'
 volumes:
   db:
     driver: local
+  elasticdata:
+    driver: local
 
 services:
   akeneo:
@@ -39,7 +41,7 @@ services:
       - akeneo
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.3
+    image: elasticsearch:5.4.3
     container_name: akeneo_search
     environment:
       ES_JAVA_OPTS: '-Xms512m -Xmx512m'
@@ -49,6 +51,9 @@ services:
     networks:
       - akeneo
     restart: always
+    volumes:
+      - elasticdata:/usr/share/elasticsearch/data
+      - ./configs/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   node:
     image: node:8.15

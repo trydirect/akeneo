@@ -25,7 +25,7 @@ assert 'configuration file /etc/php/7.2/fpm/php-fpm.conf test is successful' in 
 php_proc = php.exec_run("sh -c 'ps aux |grep php-fpm'")
 # print(php_proc.output.decode())
 assert 'php-fpm: master process (/etc/php/7.2/fpm/php-fpm.conf)' in php_proc.output.decode()
-print(php.logs())
+# print(php.logs())
 # assert 'fpm is running, pid' in php.logs()
 
 nginx_cfg = php.exec_run("/usr/sbin/nginx -T")
@@ -47,7 +47,10 @@ print(mysql_log.decode())
 elastic = client.containers.get('akeneo_search')
 assert elastic.status == 'running'
 port = client.api.inspect_container('akeneo_search')['NetworkSettings']['Ports']['9200/tcp'][0]['HostPort']
+# print(port)
 response = requests.get("http://localhost:{}".format(port))
+# print(response.text)
+
 assert '"name" : "elasticsearch"' in response.text
 assert '"number" : "5.4.3"' in response.text
 assert response.status_code == 200
