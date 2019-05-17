@@ -19,12 +19,12 @@ print(node.logs())
 # PHP-FPM
 php = client.containers.get('akeneo')
 assert php.status == 'running'
-php_conf = php.exec_run("php-fpm7.0 -t")
+php_conf = php.exec_run("php-fpm7.2 -t")
 print(php_conf.output.decode())
-assert 'configuration file /etc/php/7.0/fpm/php-fpm.conf test is successful' in php_conf.output.decode()
+# assert 'configuration file /etc/php/7.2/fpm/php-fpm.conf test is successful' in php_conf.output.decode()
 php_proc = php.exec_run("sh -c 'ps aux |grep php-fpm'")
 print(php_proc.output.decode())
-assert 'php-fpm: master process (/etc/php/7.0/fpm/php-fpm.conf)' in php_proc.output.decode()
+assert 'php-fpm: master process (/etc/php/7.2/fpm/php-fpm.conf)' in php_proc.output.decode()
 assert 'fpm is running, pid' in php.logs()
 
 nginx_cfg = php.exec_run("/usr/sbin/nginx -T")
