@@ -12,7 +12,7 @@ for c in client.containers.list():
     print(c.name)
     print(c.status)
 
-node = client.containers.get('node')
+node = client.containers.get('akeneo_node')
 print(node.logs())
 
 
