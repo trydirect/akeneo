@@ -1,0 +1,64 @@
+version: '2'
+
+services:
+  akeneo:
+    image: ${REGISTRY}trydirect/akeneo:3.0
+    build: build
+    container_name: akeneo
+    hostname: akeneo
+    user: root
+    restart: always
+    ports:
+          - "443:443"
+          - "80:80"
+    volumes:
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./nginx/conf.d:/etc/nginx/conf.d
+        - ./certs/letsencrypt:/etc/letsencrypt
+        - ./certs/ssl:/etc/nginx/ssl
+        - ./cron:/var/spool/cron/crontabs
+    links:
+        - db
+    entrypoint: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf -n
+    working_dir: /home/${APPUSER}
+    networks:
+      - akeneo
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    volumes:
+        - ./db:/var/lib/mysql
+    env_file: .env
+    networks:
+      - akeneo
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.3
+    container_name: akeneo_search
+    environment:
+      ES_JAVA_OPTS: '-Xms512m -Xmx512m'
+      discovery.type: 'single-node'
+    ports:
+      - '127.0.0.1:9210:9200'
+    networks:
+      - akeneo
+    restart: always
+
+  node:
+    image: node:8.15
+    container_name: akeneo_node
+    environment:
+      YARN_CACHE_FOLDER: '/home/node/.yarn-cache'
+    user: node
+    volumes:
+      - ./app:/home/akeneo
+      - ./app/.cache/yarn:/home/node/.yarn-cache
+    working_dir: /home/akeneo
+    networks:
+      - akeneo
+    restart: always
+
+networks:
+  akeneo:
