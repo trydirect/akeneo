@@ -5,13 +5,13 @@ cd "$(dirname "$0")"
 cd ../
 
 
-docker-compose -f docker-compose-build.yml exec akeneo php -d memory_limit=3G /usr/local/bin/composer update
+docker exec -it akeneo bash -c "php -d memory_limit=3G /home/akeneo/composer.phar update"
 docker-compose -f docker-compose-build.yml run --rm node yarn install
 
-docker-compose -f docker-compose-build.yml exec akeneo rm -rf var/cache/*
-docker-compose -f docker-compose-build.yml exec akeneo bin/console --env=prod pim:installer:assets --symlink --clean
+docker exec -it akeneo rm -rf var/cache/*
+docker exec -it akeneo bin/console --env=prod pim:installer:assets --symlink --clean
 docker-compose -f docker-compose-build.yml run --rm node yarn run webpack-dev
 
-docker-compose -f docker-compose-build.yml exec akeneo rm -rf var/cache/*
-docker-compose -f docker-compose-build.yml exec akeneo bin/console --env=prod pim:install --force --symlink --clean
+docker exec -it akeneo rm -rf var/cache/*
+docker exec -it akeneo bin/console --env=prod pim:install --force --symlink --clean
 docker-compose -f docker-compose-build.yml run --rm node yarn run webpack-dev
