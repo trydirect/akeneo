@@ -9,13 +9,13 @@ if [ ! -f ./app/config/parameters.yml ]; then
     sed -i "s/localhost: 9200/elastic:changeme@elasticsearch:9200/g" ./app/config/parameters.yml
 fi
 
-docker-compose exec akeneo php -d memory_limit=3G /usr/local/bin/composer update
-docker-compose run --rm node yarn install
+docker-compose -f docker-compose-build.yml exec akeneo php -d memory_limit=3G /usr/local/bin/composer update
+docker-compose -f docker-compose-build.yml run --rm node yarn install
 
-docker-compose exec akeneo rm -rf var/cache/*
-docker-compose exec akeneo bin/console --env=prod pim:installer:assets --symlink --clean
-docker-compose run --rm node yarn run webpack-dev
+docker-compose -f docker-compose-build.yml exec akeneo rm -rf var/cache/*
+docker-compose -f docker-compose-build.yml exec akeneo bin/console --env=prod pim:installer:assets --symlink --clean
+docker-compose -f docker-compose-build.yml run --rm node yarn run webpack-dev
 
-docker-compose exec akeneo rm -rf var/cache/*
-docker-compose exec akeneo bin/console --env=prod pim:install --force --symlink --clean
-docker-compose run --rm node yarn run webpack-dev
+docker-compose -f docker-compose-build.yml exec akeneo rm -rf var/cache/*
+docker-compose -f docker-compose-build.yml exec akeneo bin/console --env=prod pim:install --force --symlink --clean
+docker-compose -f docker-compose-build.yml run --rm node yarn run webpack-dev

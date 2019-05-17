@@ -3,7 +3,7 @@ version: '2'
 services:
   akeneo:
     image: ${REGISTRY}trydirect/akeneo:3.0
-    build: build
+    build: dockerfiles/build
     container_name: akeneo
     hostname: akeneo
     user: root
