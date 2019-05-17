@@ -7,6 +7,9 @@ RUN apt-get  -y -qq update; apt-get -y -qq install software-properties-common; \
     rm -rf /etc/nginx/sites-available/default; rm -rf /etc/nginx/sites-enabled/default;  mkdir /run/php; \
     groupadd -r -g 2000  akeneo; useradd -r -u 2000 -g 2000 -m -c "Akeneo account" -d /home/akeneo -s /bin/bash akeneo; \
     mkdir -p /opt/letsencrypt
+
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
 COPY ./src/app-demodata.tar.gz /usr/src/app-demodata.tar.gz
 COPY ./src/app.tar.gz /usr/src/app.tar.gz
 RUN  chown akeneo:akeneo  /usr/src/*

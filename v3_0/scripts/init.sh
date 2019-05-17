@@ -3,6 +3,7 @@ set -e
 cd "$(dirname "$0")"
 cd ../
 
+
 docker-compose -f docker-compose-build.yml exec akeneo php -d memory_limit=3G /usr/local/bin/composer update
 docker-compose -f docker-compose-build.yml run --rm node yarn install
 

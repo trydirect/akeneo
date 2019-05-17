@@ -28,7 +28,6 @@ before_script:
   - pip install docker
   - cd $TRAVIS_BUILD_DIR
 
-
 script:
   - bash ./.travis/linters.sh
   - bash ./v3_0/scripts/init.sh
