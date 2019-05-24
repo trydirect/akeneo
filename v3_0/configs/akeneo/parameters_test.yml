@@ -6,7 +6,7 @@ parameters:
     database_user:                        akeneo
     database_password:                    akeneo
     locale:                               en
-    secret:                               {{SecretToken}}
+    secret:                               somesecrettokenval
     product_index_name:                   akeneo_pim_product
     product_model_index_name:             akeneo_pim_product_model
     product_and_product_model_index_name: akeneo_pim_product_and_product_model
