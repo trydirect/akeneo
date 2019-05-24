@@ -59,9 +59,9 @@ services:
   node:
     image: node:8.15
     container_name: akeneo_node
+    user: node
     environment:
       YARN_CACHE_FOLDER: '/home/node/.yarn-cache'
-    user: node
     volumes:
       - ./app:/home/node
       - ./app/.cache/yarn:/home/node/.yarn-cache
