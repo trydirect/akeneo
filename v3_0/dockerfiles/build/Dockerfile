@@ -5,14 +5,17 @@ RUN apt-get  -y -qq update; apt-get -y -qq install software-properties-common; \
     php7.2-curl php7.2-fpm php7.2-gd php7.2-intl php7.2-mysql php7.2-soap \
     php7.2-xml php7.2-zip php7.2-imagick cron curl; \
     rm -rf /etc/nginx/sites-available/default; rm -rf /etc/nginx/sites-enabled/default;  mkdir /run/php; \
-    groupadd -r -g 2000  akeneo; useradd -r -u 2000 -g 2000 -m -c "Akeneo account" -d /home/akeneo -s /bin/bash akeneo; \
+    groupadd -r -g 2000 akeneo; useradd -r -u 2000 -g 2000 -m -c "Akeneo account" -d /home/akeneo -s /bin/bash akeneo; \
     mkdir -p /opt/letsencrypt
 
 ENV HOME /home/akeneo
 WORKDIR /home/akeneo
 
-RUN curl -sS https://getcomposer.org/installer | php
-RUN ln -s /home/akeneo/composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- \
+        --filename=composer \
+        --install-dir=/usr/local/bin && \
+        echo "alias composer='composer'" >> /root/.bashrc && \
+        composer
 COPY ./src/app-demodata.tar.gz /usr/src/app-demodata.tar.gz
 COPY ./src/app.tar.gz /usr/src/app.tar.gz
 RUN  chown akeneo:akeneo  /usr/src/*
