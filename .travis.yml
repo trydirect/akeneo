@@ -18,13 +18,13 @@ install:
 - cd v3_0
 - docker-compose -f docker-compose-build.yml up -d --build
 - docker-compose -f docker-compose-build.yml ps
+- bash init.sh
 before_script:
 - pip install requests
 - pip install docker
 - cd $TRAVIS_BUILD_DIR
 script:
 - bash ./.travis/linters.sh
-- bash ./v3_0/scripts/init.sh
 - python tests.py
 notifications:
   slack:

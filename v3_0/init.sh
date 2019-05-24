@@ -2,7 +2,6 @@
 
 # from pim project
 set -e
-cd ../
 
 docker-compose -f docker-compose-build.yml run --rm node yarn install
 docker-compose -f docker-compose-build.yml --user=akeneo exec akeneo bash -c "php -d memory_limit=3G composer.phar update"
