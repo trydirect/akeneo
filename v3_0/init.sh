@@ -9,5 +9,5 @@ docker-compose -f docker-compose-build.yml exec akeneo bin/console --env=prod pi
 docker-compose -f docker-compose-build.yml exec akeneo rm -rf var/cache/*
 docker-compose -f docker-compose-build.yml exec akeneo bin/console --env=prod pim:install --force --symlink --clean
 
-docker-compose -f docker-compose-build.yml --user=root run --rm node yarn install
-docker-compose -f docker-compose-build.yml --user=root run --rm node yarn run webpack
+docker-compose -f docker-compose-build.yml run --rm node yarn install
+docker-compose -f docker-compose-build.yml run --rm node yarn run webpack

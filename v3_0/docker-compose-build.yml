@@ -63,9 +63,9 @@ services:
     #      YARN_CACHE_FOLDER: '/home/node/.yarn-cache'
     user: node
     volumes:
-      - ./app:/home/node/app
+      - ./app:/home/node
     #      - ./app/.cache/yarn:/home/node/.yarn-cache
-    working_dir: /home/node/app
+    working_dir: /home/node
     networks:
       - akeneo
     restart: always
