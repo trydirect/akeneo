@@ -18,7 +18,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         composer
 COPY ./src/app-demodata.tar.gz /usr/src/app-demodata.tar.gz
 COPY ./src/app.tar.gz /usr/src/app.tar.gz
-RUN  chown akeneo:akeneo  /usr/src/*
+RUN chown akeneo:akeneo  /usr/src/*
+RUN chown akeneo:akeneo /var/lib/php/sessions
 COPY ./configs/php/cli/php.ini /etc/php/7.2/cli/php.ini
 COPY ./configs/php/fpm/php.ini /etc/php/7.2/fpm/php.ini
 COPY ./configs/php/www.conf /etc/php/7.2/fpm/pool.d/www.conf

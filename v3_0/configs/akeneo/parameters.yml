@@ -1,10 +1,10 @@
 parameters:
     database_driver:                      pdo_mysql
-    database_host:                        {{DBHOST}}
+    database_host:                        db
     database_port:                        3306
-    database_name:                        akeneo_pim
-    database_user:                        akeneo_pim
-    database_password:                    {{MYSQLDBUSERPWD}}
+    database_name:                        akeneo
+    database_user:                        akeneo
+    database_password:                    akeneo
     locale:                               en
     secret:                               {{SecretToken}}
     product_index_name:                   akeneo_pim_product

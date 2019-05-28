@@ -1,5 +1,83 @@
 # 3.0.x
 
+# 3.0.21 (2019-05-27)
+
+## Bug fixes
+
+- PIM-7772: Fix translation in roles ACL
+- PIM-8308: Fix missing translation for import and export profiles
+- PIM-8375: Fix counter on grids when user selects all results then select all visible results
+
+# 3.0.20 (2019-05-24)
+
+## Bug fixes
+
+- PIM-8257: Fix user grid filter set when creating a new user
+- PIM-8366: Translate the placeholder in the quick search input
+- PIM-8374: Fix timeout when launching the completeness purge command
+
+# 3.0.19 (2019-05-21)
+
+# Bug fixes
+
+- PIM-8343: Use BaseRemover instead of ObjectManager to delete a user
+- PIM-8340: Allow to delete a user who authored or replied to a comment
+
+# 3.0.18 (2019-05-15)
+
+# Bug fixes
+
+- PIM-8013: Fix 401 redirection on non authorized page
+- PIM-8242: Fix the search result rendering of the product grid filters when a filter is unselected
+
+# Improvements
+
+- PIM-8282: Fix error message when removing category tree linked to a channel
+
+# 3.0.17 (2019-05-10)
+
+# Bug fixes
+
+- PIM-8283: Command `akeneo:batch:purge-job-execution` now works with option `--days=0`.
+- PIM-8329: Add Serbian flag for CS region
+- PIM-8254: Attributes, attribute groups, groups, group types and channels edit page are not accessible anymore
+    and remove action is disabled from grid if they are not granted.
+
+# Improvements
+
+- AOB-472: Fix modal display when using illustration class
+- AOB-479: Resource paths in less files are now absolute and are checked when executing the "oro:assetic:dump" command to avoid wrong path resolution by Assetic.
+
+# 3.0.16 (2019-05-06)
+
+# Bug fixes
+
+- PIM-8312: Delete unique value row in `pim_catalog_product_unique_data` table when deleting unique value in product
+
+# Improvements
+
+- AOB-472: Add missing check template bootstrap modal
+- PIM-8325: Apply permissions on quick export
+
+# 3.0.15 (2019-04-30)
+
+# Bug fixes
+
+- PIM-8287: Fix horizontal scroll on history panel
+
+# 3.0.14 (2019-04-19)
+
+# Bug fixes
+
+- PIM-8291: Use the UI locale in Completeness dashboard widget
+- PIM-8285: allow reordering of some datagrid columns by forcing the presence of column.code if not provided by the backend
+
+# 3.0.13 (2019-04-15)
+
+# Bug fixes
+
+- PIM-8286: Allow users to edit their own account even if they're not granted the `pim_user_user_edit` permission
+
 # 3.0.12 (2019-04-09)
 
 # Bug fixes
@@ -22,7 +100,7 @@
 - PIM-8267: Fix user's group delete translation
 - PIM-8271: Fix import/export delete translation
 - PIM-8264: Fix multiselect style
-- PIM-8265: Fix blinking display selector on products page 
+- PIM-8265: Fix blinking display selector on products page
 - PIM-8259: add a max width and a title attribute to the label field in the product grid
 
 # 3.0.10 (2019-03-28)

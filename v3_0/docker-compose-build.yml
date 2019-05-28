@@ -57,14 +57,11 @@ services:
       - ./configs/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   node:
-    image: node:8.15
+    image: node:10-slim
     container_name: akeneo_node
-    #    environment:
-    #      YARN_CACHE_FOLDER: '/home/node/.yarn-cache'
     user: node
     volumes:
       - ./app:/home/node
-    #      - ./app/.cache/yarn:/home/node/.yarn-cache
     working_dir: /home/node
     networks:
       - akeneo
