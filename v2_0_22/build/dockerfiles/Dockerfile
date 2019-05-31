@@ -5,7 +5,7 @@ RUN apt-get  -y -qq update; apt-get -y -qq install software-properties-common; \
     php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-mcrypt  php7.1-mysql php7.1-soap \
     php7.1-xml php7.1-zip php7.1-imagick cron; \
     rm -rf /etc/nginx/sites-available/default; rm -rf /etc/nginx/sites-enabled/default;  mkdir /run/php; \
-    groupadd -r -g 20000  akeneo; useradd -r -u 20000 -g 20000 -m -c "Akeneo account" -d /home/akeneo -s /bin/bash akeneo; \
+    groupadd -r -g 2000  akeneo; useradd -r -u 2000 -g 2000 -m -c "Akeneo account" -d /home/akeneo -s /bin/bash akeneo; \
     mkdir -p /opt/letsencrypt
 COPY ./src/app.tar.gz /usr/src/app.tar.gz
 RUN  chown akeneo:akeneo  /usr/src/app.tar.gz
