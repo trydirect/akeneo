@@ -19,6 +19,5 @@ RUN chmod +x /opt/letsencrypt/letsencrypt-auto; /opt/letsencrypt/letsencrypt-aut
 
 RUN apt-get clean; apt-get autoclean; apt-get autoremove -y -qq
 
-USER akeneo
 ENV HOME /home/akeneo
 WORKDIR /home/akeneo
