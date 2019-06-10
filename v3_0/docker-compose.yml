@@ -50,15 +50,31 @@ services:
       - akeneo
     restart: always
 
+#  node:
+#    image: node:8.15
+#    container_name: akeneo_node
+#    user: node
+#    volumes:
+#      - ./app:/home/node
+#    working_dir: /home/node
+#    networks:
+#      - akeneo
+
   node:
-    image: node:8.15
+    image: node:8.16-stretch-slim
     container_name: akeneo_node
-    user: node
+    user: root
     volumes:
       - ./app:/home/node
+      - ./yarn-cache:/home/node/.yarn-cache
+      - ./yarn-error.log:/yarn-error.log
+      - ./node_modules:/node_modules
     working_dir: /home/node
     networks:
       - akeneo
+    environment:
+      YARN_CACHE_FOLDER: '/home/node/.yarn-cache'
+
 
 networks:
   akeneo:
