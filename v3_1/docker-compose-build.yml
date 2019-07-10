@@ -68,8 +68,8 @@ services:
   node:
     image: node:10-slim
     container_name: akeneo_node
-    #user: root
-    user: node
+    user: root
+#    user: node
     volumes:
       - ./app:/home/node
       - ./yarn-cache:/home/node/.yarn-cache
