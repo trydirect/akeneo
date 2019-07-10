@@ -56,15 +56,30 @@ services:
       - elasticdata:/usr/share/elasticsearch/data
       - ./configs/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
+#  node:
+#    image: node:10-slim
+#    container_name: akeneo_node
+#    user: node
+#    volumes:
+#      - ./app:/home/node
+#    working_dir: /home/node
+#    networks:
+#      - akeneo
   node:
     image: node:10-slim
     container_name: akeneo_node
+    #user: root
     user: node
     volumes:
       - ./app:/home/node
+      - ./yarn-cache:/home/node/.yarn-cache
+      - ./yarn-error.log:/yarn-error.log
+      - ./node_modules:/node_modules
     working_dir: /home/node
     networks:
       - akeneo
+    environment:
+      YARN_CACHE_FOLDER: '/home/node/.yarn-cache'
 
 
 networks:
