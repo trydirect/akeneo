@@ -21,3 +21,4 @@ RUN apt-get clean; apt-get autoclean; apt-get autoremove -y -qq
 
 ENV HOME /home/akeneo
 WORKDIR /home/akeneo
+EXPOSE 9000
