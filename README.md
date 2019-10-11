@@ -30,6 +30,13 @@ $ docker-compose up -d
 ```
 
 
+## Quick deployment to cloud
+##### Amazon AWS, Digital Ocean, Hetzner and others
+[<img src="https://img.shields.io/badge/quick%20deploy|3.0-%40try.direct-brightgreen.svg">](https://try.direct/server/user/deploy/ImFrZW5lbzN8NnwyMSI.EAoFeA.C7647Nw1nehXGsu5_PBehkI5tz8/)
+[<img src="https://img.shields.io/badge/quick%20deploy|2.0.22-%40try.direct-brightgreen.svg">](https://try.direct/server/user/deploy/ImFrZW5lb3w2fDIyIg.EAoFeA.JtCgx-NVqUqpyP47-VKSAVN2pRo/)
+
+
+
 # Contributing
 
 1. Fork it (https://github.com/trydirect/akeneo/fork)
